@@ -23,14 +23,21 @@ class Game:
 
 
 def main():
-    try:
-        fee = int(input('Entrance fee: '))
-    except Exception as e:
-        print(e)
+    while True:
+        try:
+            fee = int(input('Entrance fee: '))
+        except ValueError:
+            print('Only positive integers please!')
+            continue
+        if fee < 0:
+            print('Only positive integers please!')
+            continue
+        else:
+            break
 
     game = Game(fee)
 
-    while input('Try your luck (y / n) ? ') == 'y':
+    while input('Try your luck (y / n)? ') == 'y':
         game.turn = 0
 
         print('Coin toss results:\n')
